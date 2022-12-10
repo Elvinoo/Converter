@@ -13,10 +13,8 @@ buttons.forEach(button => {
         calculate1()
     })
 })
-
 firstInput.addEventListener('keyup', calculate1)
 secondInput.addEventListener('keyup', calculate2)
-
 function calculate1() {
     let base = document.querySelector('.box1 .active');
     let symbols = document.querySelector('.box2 .active');
@@ -30,7 +28,6 @@ function calculate1() {
                 secondInput.value = ''
             }
         })
-
 }
 function calculate2() {
     let base = document.querySelector('.box1 .active');
@@ -52,15 +49,10 @@ function exhchange() {
     let base = document.querySelector('.box1 .input p');
     let symbols = document.querySelector('.box2 .input p');
     fetch(`https://api.exchangerate.host/latest?base=${firstCurrency.innerText}&symbols=${secondCurrency.innerText}`)
-        .then(response => response.json())
+        .then(res => res.json())
         .then(data => {
             let value = data.rates[`${secondCurrency.innerText}`]
             base.innerText = `1 ${firstCurrency.innerText} = ${value} ${secondCurrency.innerText}`;
-        })
-    fetch(`https://api.exchangerate.host/latest?base=${secondCurrency.innerText}&symbols=${firstCurrency.innerText}`)
-        .then(response => response.json())
-        .then(data => {
-            let value = data.rates[`${firstCurrency.innerText}`]
-            symbols.innerText = `1 ${secondCurrency.innerText} = ${value} ${firstCurrency.innerText}`
+            symbols.innerText = `1 ${secondCurrency.innerText} = ${(1 / value).toFixed(6)} ${firstCurrency.innerText}`
         })
 }
