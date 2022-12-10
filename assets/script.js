@@ -11,11 +11,7 @@ buttons.forEach(button => {
         selected.classList.remove('active');
         e.target.classList.add('active');
         exhchange()
-        if (box.className == 'box1') {
-            calculate1()
-        } else {
-            calculate2()
-        }
+        calculate1()
     })
 })
 
