@@ -5,7 +5,6 @@ const buttons = document.querySelectorAll('.buttons button');
 buttons.forEach(button => {
     button.addEventListener('click', function (e) {
         const parentDiv = e.target.parentElement;
-        const box = parentDiv.parentElement;
         const selected = parentDiv.querySelector('.active');
         selected.classList.remove('active');
         e.target.classList.add('active');
@@ -51,8 +50,13 @@ function exhchange() {
     fetch(`https://api.exchangerate.host/latest?base=${firstCurrency.innerText}&symbols=${secondCurrency.innerText}`)
         .then(res => res.json())
         .then(data => {
-            let value = data.rates[`${secondCurrency.innerText}`]
-            base.innerText = `1 ${firstCurrency.innerText} = ${value} ${secondCurrency.innerText}`;
-            symbols.innerText = `1 ${secondCurrency.innerText} = ${(1 / value).toFixed(6)} ${firstCurrency.innerText}`
+            let value = data.rates[`${secondCurrency.innerText}`];
+            if (firstCurrency.innerText == secondCurrency.innerHTML) {
+                base.innerText = `1 ${firstCurrency.innerText} = ${value} ${secondCurrency.innerText}`;
+                symbols.innerText = base.innerText;
+            } else {
+                base.innerText = `1 ${firstCurrency.innerText} = ${value} ${secondCurrency.innerText}`;
+                symbols.innerText = `1 ${secondCurrency.innerText} = ${(1 / value).toFixed(6)} ${firstCurrency.innerText}`
+            }
         })
 }
