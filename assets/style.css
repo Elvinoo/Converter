@@ -156,6 +156,14 @@ input::-webkit-inner-spin-button {
         border: 1px solid #E5E5E5;
         border-radius: 3px;
     }
+    .currency-boxes{
+        display: block;
+        padding-left:80px;
+    }
+    .box1,
+    .box2{
+        margin:0 auto;
+    }
     .buttons button {
         font-size: 12px;
         line-height: 14px;
