@@ -18,10 +18,10 @@ header {
     color: #959BA4;
     letter-spacing: 0.06em;
     margin-bottom: 56px;
+    justify-content: space-evenly;
 }
 
 img {
-    padding-left: 100px;
     width: 89px;
     height: 23px
 }
