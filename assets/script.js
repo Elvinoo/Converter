@@ -1,3 +1,4 @@
+window.addEventListener('offline', (e) => { console.log('offline'); });
 exhchange()
 const firstInput = document.querySelector('.first-input');
 const secondInput = document.querySelector('.second-input');
